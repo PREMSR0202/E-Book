@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<div th:replace="fragments/header :: head"></div>
+	<style>
+		html,
+		body {
+			height: 90%;
+		}
+
+		body {
+			background: url("/img/flare.jpg");
+			background-size: cover;
+			background-position: center;
+			font-family: 'Jura', sans-serif;
+		}
+
+		.card {
+			box-shadow: 10px 10px 10px 10px black;
+		}
+	</style>
+
+	<head>
+
+	<body>
+		<div th:replace="fragments/navbar :: navbar"></div>
+		<section class="container">
+			<h2 class=" mt-5 text-dark" th:text="${result}" style="color: black;"></h2>
+			<div th:each="i : ${listbooks}" class="col-md-12 mt-3">
+				<div class="row">
+					<div class="card mb-3">
+						<div class="row">
+							<div class="col-md-4">
+								<img th:src="@{${i.book_image}}" height="350px" class="card-img-top" alt="...">
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h3 class="card-title" th:text="${i.book_name}"></h3>
+									<kbd>Author Name</kbd>
+									<h4 class="card-title" th:text="${i.author_name}"></h4>
+									<kbd>Genre</kbd>
+									<h5 class="card-title" th:text="${i.book_genre}"></h5>
+									<kbd th:text="${i.book_edition}"></kbd>
+									<kbd th:text="${i.book_publication}"></kbd>
+									<p class="card-text mt-1" th:text="${i.book_description}"></p>
+
+									<a th:if="${account== true}" th:href="@{/pdfshow(path = ${i.book_path})}"
+										class="btn btn-success" target="parent"><i class="fas fa-book-open"></i> Read
+										More</a>
+
+									<a th:if="${account== false}" th:href="@{/payment}" class="btn btn-success"><i
+											class="fas fa-book-open"></i> Read
+										More</a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</section>
+	</body>
+
+</html>

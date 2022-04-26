@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<div th:include="fragments/header::head"></div>
+	<title>Payment</title>
+	<style>
+		body {
+			background-color: black;
+			font-family: 'Jura', sans-serif;
+		}
+
+		.form-control:focus {
+			border-color: #5cb85c;
+			box-shadow: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div th:replace="fragments/navbar :: navbar"></div>
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card p-3">
+					<center>
+						<h2 class="card-title"><i class="fas fa-shopping-cart"></i> Reader's Checkout</h2>
+					</center>
+					<div class="car-body">
+						<form method="post" th:action="@{/pay}" th:object="${object}">
+							<label>Price</label>
+							<input type="text" class="form-control" id="price" name="price" value="2"
+								th:readonly="true"><br>
+							<label>Currency</label>
+							<input type="text" class="form-control" id="currency" name="currency" value="USD"
+								placeholder="Enter Currency" th:readonly="true"><br>
+							<label>Payment Method</label>
+							<input type="text" class="form-control" id="method" value="paypal" name="method"
+								placeholder="Payment Method" th:readonly="true"><br>
+							<input type="hidden" id="intent" name="intent" value="sale" th:readonly="true">
+							<label>Payment Description</label>
+							<input type="text" class="form-control" id="description" name="description"
+								value="E-Book Subscription for Reader's" placeholder="Payment Description"
+								th:readonly="true">
+							<br>
+							<button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Continue
+								to Checkout</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="card p-3">
+					<center>
+						<h2 class="card-title"><i class="fas fa-shopping-cart"></i> Author's Checkout</h2>
+					</center>
+					<div class="car-body">
+						<form method="post" th:action="@{/pay}" th:object="${object}">
+							<label>Price</label>
+							<input type="text" class="form-control" id="price" name="price" value="5"
+								th:readonly="true"><br>
+							<label>Currency</label>
+							<input type="text" class="form-control" id="currency" name="currency" value="USD"
+								placeholder="Enter Currency" th:readonly="true"><br>
+							<label>Payment Method</label>
+							<input type="text" class="form-control" id="method" value="paypal" name="method"
+								placeholder="Payment Method" th:readonly="true"><br>
+							<input type="hidden" id="intent" name="intent" value="sale" th:readonly="true">
+							<label>Payment Description</label>
+							<input type="text" class="form-control" id="description" name="description"
+								value="E-Book Subscription for Author's" placeholder="Payment Description"
+								th:readonly="true">
+							<br>
+							<button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Continue
+								to Checkout</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

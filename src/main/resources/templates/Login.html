@@ -1,0 +1,55 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Login</title>
+	<div th:include="fragments/header::head"></div>
+	<link rel="stylesheet" href="/css/style2.css">
+</head>
+
+<body>
+	<div class="container mt-5">
+		<div class="row">
+			<center>
+				<div class="col-md-4">
+					<div class="card p-3">
+						<h4 class="card-title"><i class="fas fa-user-tie"></i> Login</h4>
+						<div class="card-body">
+							<form method="post" th:action="@{/login}">
+								<p th:if="${loginError}" style="color: red;" class="alert alert-danger">Invalid Email or
+									password</p>
+								<div>
+									<div>
+										<label for="email">Email</label>
+										<input class="form-control" type="email" name="email" placeholder="Email"
+											required>
+									</div>
+								</div>
+								<div>
+									<div>
+										<label for="pwd">Password</label>
+										<input class="form-control" type="password" name="pwd" placeholder="Password"
+											required>
+									</div>
+									<br>
+								</div>
+
+								<button type="submit" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>
+									Login</button>
+
+								<h6 class="mt-3"><a th:href="@{/register}"><i class="fas fa-user-tie"></i>  Register New
+										User</h6>
+								<a th:href="@{/forgot_password}"><i class="fas fa-lock-open"></i>  Forgot your
+									password?</a>
+							</form>
+						</div>
+					</div>
+				</div>
+			</center>
+		</div>
+
+	</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<div th:replace="fragments/header :: head"></div>
+	<style>
+		body {
+			background: url("/img/book.jpg");
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			font-family: 'Jura', sans-serif;
+		}
+
+		.card {
+			box-shadow: 10px 10px 10px 10px black;
+		}
+
+		span {
+			color: red;
+		}
+
+		.form-control:focus {
+			border-color: #5cb85c;
+			box-shadow: none;
+		}
+	</style>
+
+	<head>
+
+	<body>
+		<div th:replace="fragments/navbar :: navbar"></div>
+		<section class="container"><br />
+			<div class="row">
+				<div class="col-md-6">
+					<div class="card">
+						<h2 th:if="${edit=='newbook'}" class="d-flex justify-content-center mt-2">
+						<i class="fas fa-book-open"> </i> New Book</h2>
+						<h2 th:if="${edit=='update'}" class="d-flex justify-content-center mt-2"><i
+								class="fas fa-edit"></i> Update Book</h2>
+						<div class="card-body">
+							<form th:action="@{/upload/book}" method="POST" enctype="multipart/form-data"
+								th:object="${books}">
+								<input type="hidden" th:field=*{book_id}>
+								<p>Book Name</p>
+								<input class="form-control" type="text" th:field=*{book_name} required />
+								<span th:each="err : ${#fields.errors('book_name')}" th:text="${err}" class=""></span>
+								<p>Author Name</p>
+								<input class="form-control" type="text" th:field=*{author_name} required />
+								<p>Book Edition</p>
+								<input class="form-control" type="text" th:field=*{book_edition} required />
+								<p>Book Publication</p>
+								<input class="form-control" type="text" th:field=*{book_publication} required />
+								<p>Book Description</p>
+								<input class="form-control" type="text" th:field=*{book_description} required />
+								<span th:each="err : ${#fields.errors('book_description')}" th:text="${err}"
+									class=""></span>
+								<p>Book Genre</p>
+								<select class="form-select" th:field="*{book_genre}" required>
+									<option th:value="'thriller'" th:text="Thriller"></option>
+									<option th:value="'action'" th:text="Action"></option>
+									<option th:value="'mystery'" th:text="Mystery"></option>
+									<option th:value="'Romantic'" th:text="Romantic"></option>
+									<option th:value="'Programming'" th:text="Programming"></option>
+									<option th:value="'Education'" th:text="Education"></option>
+								</select>
+								<p>Premium / Free</p>
+								<select class="form-select" th:field="*{book_status}" required>
+									<option th:value="'1'" th:text="Premium"></option>
+									<option th:value="'0'" th:text="Free"></option>
+								</select>
+								<p>Cover Image</p>
+								<input class="form-control" type="file" name="fileImage" id="fileImage" required />
+								<p>Book PDF</p>
+								<input class="form-control" type="file" name="filePDF" id="filePDF" required />
+								<br>
+								<button th:if="${edit=='newbook'}" class="btn btn-primary" type="submit"><i
+										class="fas fa-book-open"></i> Add
+									Book</button>
+								<button th:if="${edit=='update'}" class="btn btn-primary" type="submit"><i
+										class="fas fa-edit"></i> Update
+									Book</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br />
+
+		</section>
+
+
+	</body>
+
+</html>

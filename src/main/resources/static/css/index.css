@@ -1,0 +1,52 @@
+:root {
+  --primary-color: white;
+  --secondary-color: black;
+}
+
+body {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  font-family: "Jura", sans-serif;
+}
+
+.first {
+  padding-bottom: 15px;
+}
+.first .hand {
+  font-size: 40px;
+}
+
+.cards .card {
+  color: var(--secondary-color);
+}
+
+.donations {
+  background-color: var(--primary-color);
+  font-family: "Cutive Mono", monospace;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+.donations i {
+  font-size: 80px;
+}
+
+.footer {
+  background-color: var(--secondary-color);
+}
+.footer .card {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+.footer a i {
+  color: var(--primary-color);
+  font-size: 40px;
+}
+.footer .footerhover:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+.footer .footerhover:hover i {
+  color: var(--secondary-color);
+}
+
+/*# sourceMappingURL=index.css.map */

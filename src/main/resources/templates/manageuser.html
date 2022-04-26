@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<div th:replace="fragments/header :: head"></div>
+	<style>
+		body {
+			background-color: black;
+			font-family: 'Jura', sans-serif;
+		}
+
+		.table {
+			background-color: white;
+		}
+	</style>
+
+	<head>
+
+	<body>
+		<div th:replace="fragments/navbar :: navbar"></div>
+		<section class="container">
+			<div class="table-responsive mt-5">
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<td>First Name</td>
+							<td>Last Name</td>
+							<td>Email</td>
+							<td>Account</td>
+							<td>Role</td>
+						</tr>
+					</thead>
+					<tbody>
+						<div th:each="i : ${listofusers}">
+							<tr>
+								<td th:text="${i.fname}"></td>
+								<td th:text="${i.lname}"></td>
+								<td th:text="${i.email}"></td>
+								<td th:if="${i.account == true}">
+									<a class="btn btn-primary" th:if="${i.role.id == 2}" target="parent"
+										th:href="@{/showinvoice(path = ${i.invoice})}">Premium</a>
+									<a class="btn btn-primary" th:if="${i.role.id == 3}" target="parent"
+										th:href="@{/showinvoice(path = ${i.invoice})}">Premium</a>
+									<button class="btn btn-primary" th:if="${i.role.id == 1}">ADMIN</button>
+								</td>
+								<td th:if="${i.account == false}">
+									<button class="btn btn-warning">Free</button>
+								</td>
+								<td th:if="${i.role.id == 1}">
+									<a class="btn btn-danger">Admin</a>
+								</td>
+								<td th:if="${i.role.id == 2}">
+									<a class="btn btn-danger">Reader</a>
+								</td>
+								<td th:if="${i.role.id == 3}">
+									<a class="btn btn-danger">Author</a>
+								</td>
+						</div>
+					</tbody>
+				</table>
+			</div>
+
+		</section>
+	</body>
+
+</html>

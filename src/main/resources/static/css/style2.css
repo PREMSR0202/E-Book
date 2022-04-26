@@ -1,0 +1,18 @@
+html,
+body {
+  height: 90%;
+}
+body {
+  background: url(/img/backgrounds.jpg);
+  background-size: cover;
+  background-position: center;
+  font-family: "Jura", sans-serif;
+}
+
+.form-control:focus {
+  border-color: #5cb85c;
+  box-shadow: none;
+}
+.card {
+  box-shadow: 10px 10px 10px 10px black;
+}

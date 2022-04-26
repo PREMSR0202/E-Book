@@ -1,0 +1,66 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Register</title>
+	<div th:include="fragments/header::head"></div>
+	<link rel="stylesheet" href="/css/style2.css">
+</head>
+
+<body>
+
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-title">
+						<center>
+							<h1><i class="fas fa-user-tie"></i> Registration</h1>
+						</center>
+					</div>
+					<div class="card-body">
+						<form method="post" th:object="${userForm}" th:action="@{/register}">
+
+							<div class="mb-3">
+								<label for="fname">FirstName</label>
+								<input class="form-control" type="text" th:field="*{fname}" name="fname"
+									placeholder="First Name">
+								<span style="color: red" th:each="err : ${#fields.errors('fname')}" th:text="${err}"
+									class=""></span>
+							</div>
+
+							<div class="mb-3">
+								<label for="lname">LastName</label>
+								<input class="form-control" type="text" th:field="*{lname}" name="lname"
+									placeholder="Last Name">
+								<span style="color: red" th:each="err : ${#fields.errors('lname')}" th:text="${err}"
+									class=""></span>
+							</div>
+							<div class="mb-3">
+								<label for="email">Email</label>
+								<input class="form-control" type="email" th:field="*{email}" name="email"
+									placeholder="Email">
+								<span style="color: red" th:each="err : ${#fields.errors('email')}" th:text="${err}"
+									class=""></span>
+							</div>
+							<div class="mb-3">
+								<label for="pwd">Password</label>
+								<input class="form-control" type="password" th:field="*{pwd}" name="pwd"
+									placeholder="Password">
+								<span style="color: red" th:each="err : ${#fields.errors('pwd')}" th:text="${err}"
+									class=""></span>
+							</div>
+							<button type="submit" class="btn btn-primary"><i class="fas fa-cloud-download-alt"></i>
+								SignUp</button>
+						</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+
+</body>
+
+</html>
